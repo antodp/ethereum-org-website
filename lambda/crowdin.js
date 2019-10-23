@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axois = require('axios');
 
 exports.handler = async function(event, context) {
   try {
@@ -6,7 +6,7 @@ exports.handler = async function(event, context) {
       'https://api.crowdin.com/api/project/ethereumfoundation/status';
     const { CROWDIN_API_KEY } = process.env;
 
-    const response = await fetch(`${baseURL}?key=${CROWDIN_API_KEY}&json`);
+    const response = await axois.get(`${baseURL}?key=${CROWDIN_API_KEY}&json`);
 
     if (!response.ok) {
       // NOT res.status >= 200 && res.status < 300

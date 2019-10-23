@@ -63,7 +63,7 @@ export default {
     // TODO update to server endpoint
     axios
       // .get('http://localhost:34567/crowdin')
-      .get('/.netlify/api/crowdin')
+      .get('/.netlify/functions/crowdin')
         .then(response => {
           let languages = [];
           if (response.data && response.data.data) {
