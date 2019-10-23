@@ -62,24 +62,25 @@ export default {
   mounted () {
     // TODO update to server endpoint
     axios
-      .get('http://localhost:8080/crowdin')
-      .then(response => {
-        let languages = [];
-        if (response.data && response.data.data) {
-          languages = response.data.data;
-        }
-        const completedLangCodes = Object.keys(this.completed);
-        const incomplete = languages.filter(lang => {
-          // TODO this filter doesn't work - update translations keys to match crowdin codes
-          return !completedLangCodes.includes(lang.code)
-        }).map(lang => {
-          lang.url = `https://crowdin.com/project/ethereumfoundation/${lang.code}`
-          return lang;
-        });
-        this.incomplete = incomplete;
-      })
-      // TODO create error case
-      .catch(error => console.log(error))
+      // .get('http://localhost:34567/crowdin')
+      .get('/.netlify/api/crowdin')
+        .then(response => {
+          let languages = [];
+          if (response.data && response.data.data) {
+            languages = response.data.data;
+          }
+          const completedLangCodes = Object.keys(this.completed);
+          const incomplete = languages.filter(lang => {
+            // TODO this filter doesn't work - update translations keys to match crowdin codes
+            return !completedLangCodes.includes(lang.code)
+          }).map(lang => {
+            lang.url = `https://crowdin.com/project/ethereumfoundation/${lang.code}`
+            return lang;
+          });
+          this.incomplete = incomplete;
+        })
+        // TODO create error case
+        .catch(error => console.log(error))
   }
 };
 </script>
