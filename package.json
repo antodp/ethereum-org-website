@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "postinstall": "netlify-lambda install"
   },
   "author": "Alan Woo (Bin Studio) <alan@bin.am>",
   "license": "MIT",
@@ -13,5 +14,8 @@
     "@vuepress/plugin-active-header-links": "^1.0.0-rc.1",
     "vuepress": "^1.0.0-alpha.47"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.19.0",
+    "netlify-lambda": "^1.6.3"
+  }
 }
